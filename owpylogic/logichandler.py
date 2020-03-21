@@ -18,13 +18,13 @@ def executor(key, loc, unit):
     times = [curr]
     c = 0
     forecast = []
-    print("\n\n----------------------------------------WEATHER FORECAST----------------------------------------\n\n")
+    print("\n\n----------------------------------------WEATHER FORECAST----------------------------------------\n")
     for w in meas:
         if c > 12:
             break
         temps.append(w.get_temp())
         hums.append(w.get_hum())
-        temporary=""
+        temporary = ""
         if c == 0:
             temporary = curr
         if c != 0:
@@ -36,7 +36,7 @@ def executor(key, loc, unit):
 
 
 def plot_creator(times, temps, hums, unit):
-
+    print("Check the plots for more in detail info.")
     plt.subplot(2, 1, 1)
     plt.plot(times, temps)
     plt.title("Temperature and humidity % in the next 36 hours")
