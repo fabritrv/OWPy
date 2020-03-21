@@ -31,7 +31,7 @@ def executor(key, loc, unit):
             temporary = (datetime.now() + timedelta(hours=3) * c).strftime('%m/%d,%H')
             times.append(temporary)
         c += 1
-        forecast.append(temporary+":00 - "+w.get_status())
+        print(temporary+":00 - "+w.get_status()+"\n")
     plot_creator(times, temps, hums, unit)
 
 
@@ -39,7 +39,7 @@ def plot_creator(times, temps, hums, unit):
 
     plt.subplot(2, 1, 1)
     plt.plot(times, temps)
-    plt.title("Temperature forecast for the next 36 hours")
+    plt.title("Temperature and humidity % in the next 36 hours")
     if unit == 'celsius':
         plt.ylabel('Temperature '+'[°C]')
         plt.ylim([-5, 40])
@@ -50,7 +50,6 @@ def plot_creator(times, temps, hums, unit):
 
     plt.subplot(2, 1, 2)
     plt.plot(times, hums)
-    plt.title("Umidity % forecast for the next 36 hours")
     plt.ylabel('Humidity %')
     plt.xlabel('Time')
     plt.ylim([0, 100])
