@@ -1,1 +1,2 @@
-Script that shows temperature and humidity % forecast for the next 36hours given a certain location, using OpenWeather APIs
+HOW TO:
+Enter API key, location('City, SC' where City=name of your city and SC=two letter state code eg. US), unit ('celsius' o 'fahreneit')
