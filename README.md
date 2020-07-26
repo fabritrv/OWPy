@@ -1,5 +1,5 @@
 # OWPy
-Simple Python program that uses OpenWeatherMap's APIs to display temperature and himidity graphs for the next 36 hours in a certain location. 
+Simple Python program that uses OpenWeatherMap's APIs to display temperature and humidity % for the next 36 hours, given a certain location.
 
 #### HOW TO USE:
 Insert in the main:
