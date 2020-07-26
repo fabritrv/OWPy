@@ -1,8 +1,7 @@
-from dataClass.weatherData import WeatherData
+from weatherData import WeatherData
 
 
 class ForecastData(WeatherData):
-
     def __init__(self, weather, unit):
         self._temp = weather.get_temperature(str(unit))["temp"]
         self._hum = weather.get_humidity()

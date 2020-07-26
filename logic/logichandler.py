@@ -1,6 +1,8 @@
 from datetime import datetime, timedelta
-import pyowm
+
 import matplotlib.pyplot as plt
+import pyowm
+
 from dataClass.forecastHandler import ForecastHandler
 from dataClass.locationData import Location
 from dataClass.weatherData import WeatherData
@@ -17,7 +19,6 @@ def executor(key, loc, unit):
     curr = datetime.now().strftime("%m/%d,%H")
     times = [curr]
     c = 0
-    forecast = []
     print(
         "\n\n----------------------------------------WEATHER FORECAST----------------------------------------\n"
     )
