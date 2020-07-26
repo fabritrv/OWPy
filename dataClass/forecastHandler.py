@@ -1,4 +1,4 @@
-from forecastData import ForecastData
+from .forecastData import ForecastData
 
 
 class ForecastHandler:

@@ -1,4 +1,4 @@
-from weatherData import WeatherData
+from .weatherData import WeatherData
 
 
 class ForecastData(WeatherData):
