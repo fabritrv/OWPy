@@ -1,4 +1,4 @@
-from owpylogic.logichandler import executor
+from logic.logichandler import executor
 
 
-executor("", "Turin, IT", "celsius") #first parameter is API key
+executor("", "Turin, IT", "celsius")  # first parameter is API key
