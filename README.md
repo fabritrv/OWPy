@@ -10,4 +10,4 @@ Insert in the main:
 3. Unit of measurement: 'celsius' or 'fahreneit'.
 
 #### NOTE:
-pyowm - a library which OWPy relies on - went from version 2.x to version 3.x, and it wasn't a soft transition at all. It basically change all the previous code, forcing devs who use it to review all the project that include it. For this reason the project is currently WIP and will see some changes soon.
+Now rebased to work with pyowm version 3.x!
