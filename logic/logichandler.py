@@ -17,12 +17,11 @@ def executor(key, loc, unit):
     wm = pyowm.weatherapi25.weather_manager.WeatherManager(
         key, config_dict
     )  # object needed to get current weather in certain location
+
     cw = get_current_weather(wm, location, unit)
     meas = get_forecast(
         wm, location, unit, cw
     )  # appends forecast data to the current weather data
-
-    # TODO: get forecast correctly according to 3.0, review data showing and plot
 
     temps = []
     hums = []
@@ -46,6 +45,7 @@ def executor(key, loc, unit):
             )  # 3 hour increment for each forecast, which is what OWM offers
             times.append(temporary)
         print(temporary + ":00 - " + w.get_status() + "\n")
+
     plot_creator(times, temps, hums, unit)
 
 
