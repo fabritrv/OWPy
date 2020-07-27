@@ -1,4 +1,6 @@
 from logic.logichandler import executor
 
 
-executor("", "Turin, IT", "celsius")  # first parameter is API key
+executor(
+    "", "London, UK", "celsius"
+)  # first parameter is API key, second is location, third is unit of measurement

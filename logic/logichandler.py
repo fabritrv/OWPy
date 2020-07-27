@@ -9,11 +9,21 @@ from dataClass.weatherData import WeatherData
 
 
 def executor(key, loc, unit):
-    owm = pyowm.OWM(key)
-    location = Location(loc)
-    meas = [WeatherData(location, owm, unit)]
-    handler = ForecastHandler(location, owm, unit)
-    meas = handler.get_full_data(meas)
+    owm = pyowm.OWM(key)  # owm object
+    config_dict = owm.configuration  # configuration needed to create other objects
+    location = Location(
+        loc
+    )  # location object that returns latitude and longitude correctly formatted
+    wm = pyowm.weatherapi25.weather_manager.WeatherManager(
+        key, config_dict
+    )  # object needed to get current weather in certain location
+    cw = get_current_weather(wm, location, unit)
+    meas = get_forecast(
+        wm, location, unit, cw
+    )  # appends forecast data to the current weather data
+
+    # TODO: get forecast correctly according to 3.0, review data showing and plot
+
     temps = []
     hums = []
     curr = datetime.now().strftime("%m/%d,%H")
@@ -22,18 +32,19 @@ def executor(key, loc, unit):
     print(
         "\n\n----------------------------------------WEATHER FORECAST----------------------------------------\n"
     )
-    for w in meas:
-        if c > 12:
+    for c, w in enumerate(meas):
+        if c > 12:  # max 36 hours forecast
             break
-        temps.append(w.get_temp())
+        temps.append(w.get_temp()["temp"])
         hums.append(w.get_hum())
         temporary = ""
         if c == 0:
             temporary = curr
         if c != 0:
-            temporary = (datetime.now() + timedelta(hours=3) * c).strftime("%m/%d,%H")
+            temporary = (datetime.now() + timedelta(hours=3) * c).strftime(
+                "%m/%d,%H"
+            )  # 3 hour increment for each forecast, which is what OWM offers
             times.append(temporary)
-        c += 1
         print(temporary + ":00 - " + w.get_status() + "\n")
     plot_creator(times, temps, hums, unit)
 
@@ -58,3 +69,16 @@ def plot_creator(times, temps, hums, unit):
     plt.ylim([0, 100])
 
     plt.show()
+
+
+def get_current_weather(wm, location, unit):
+    meas = [
+        WeatherData(location, wm, unit)
+    ]  # array of measurements with the contenct of the construcotr for WeatherData
+    return meas
+
+
+def get_forecast(wm, location, unit, cw):
+    handler = ForecastHandler(location, wm, unit)
+    meas = handler.get_full_data(cw)
+    return meas

@@ -3,7 +3,9 @@ from .weatherData import WeatherData
 
 class ForecastData(WeatherData):
     def __init__(self, weather, unit):
-        self._temp = weather.get_temperature(str(unit))["temp"]
-        self._hum = weather.get_humidity()
-        self._pres = weather.get_pressure()
-        self._status = weather.get_status()
+        self._temp = weather.temperature(
+            unit
+        )  # dict cointaining temp, matxtemp, mintemp
+        self._hum = weather.humidity
+        self._pres = weather.pressure
+        self._status = weather.status
