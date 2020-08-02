@@ -29,7 +29,7 @@ def executor(key, loc, unit):
     times = [curr]
     c = 0
     print(
-        "\n\n----------------------------------------WEATHER FORECAST----------------------------------------\n"
+        f"\n\n----------------------------------------  WEATHER FORECAST ({loc})  ----------------------------------------\n"
     )
     for c, w in enumerate(meas):
         if c > 12:  # max 36 hours forecast
